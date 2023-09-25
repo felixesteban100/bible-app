@@ -1,31 +1,27 @@
 
-import Button from "../reusableComponents/Button";
 import { useEffect, useState } from "react";
 import Loading from "../reusableComponents/Loading";
 import { HighlightedVerse, ReadPageProps } from "../types";
 import { ERROR_AXIOS_TEMPLATE } from "../constants/ErrorAxios";
+import useWindowWidth from "@/hooks/useWindowWidth";
+import useClickAndScroll from "@/hooks/useClickAndScroll";
+import { isEqual } from "@/functions";
 
 
 function ReadPage({
     bookSelected: {
-        bookid: book_idSelected,
+        // bookid: book_idSelected,
         name: book_nameSelected
     },
     bookSelected,
     chapterSelected,
     versionSelected,
-    moveChapter,
     textSize,
-
     verseSelected,
-    /* refVerse, */
-
     chapterContent,
     error,
     isLoading,
-    // refetch,
     isFetching,
-
     highlithedVerses,
     setHighlithedVerses,
 
@@ -34,34 +30,44 @@ function ReadPage({
 
     useEffect(() => {
         if (verseSelected !== 0) {
-            setUnderlineVerse(true)
+            const section = document.getElementById(`verse-${verseSelected}`);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop + 70,
+                    behavior: 'smooth'
+                })
+            }
             setTimeout(() => {
-                setUnderlineVerse(false)
-            }, 7000)
+                setUnderlineVerse(true)
+            }, 1000)
         }
     }, [verseSelected])
 
-    // const windowScrollY = useWindowScrollY();
+    const windowWidth = useWindowWidth()
 
-    // const windowWidth = useWindowWidth()
-
-    // const scrollDirection = useScrollDirection();
+    const divRef = useClickAndScroll(() => setUnderlineVerse(false));
 
     function getTextSize(textSize: number) {
-        switch (textSize) {
-            case 1: return 'text-[1rem]'
-
-            case 2: return 'text-[1.5rem]'
-
-            case 3: return 'text-[2rem]'
-
-            case 4: return 'text-[2.5rem]'
-
-            case 5: return 'text-[3rem]'
-
-            case 6: return 'text-[4rem]'
-
-            default: return 'text-[2rem]'
+        if (windowWidth > 700) {
+            switch (textSize) {
+                case 1: return 'text-[1rem]'
+                case 2: return 'text-[1.5rem]'
+                case 3: return 'text-[2rem]'
+                case 4: return 'text-[2.5rem]'
+                case 5: return 'text-[3rem]'
+                case 6: return 'text-[4rem]'
+                default: return 'text-[2rem]'
+            }
+        } else {
+            switch (textSize) {
+                case 1: return 'text-[10px]'
+                case 2: return 'text-[15px]'
+                case 3: return 'text-[20px]'
+                case 4: return 'text-[25px]'
+                case 5: return 'text-[30px]'
+                case 6: return 'text-[35px]'
+                default: return 'text-[20px]'
+            }
         }
     }
 
@@ -74,9 +80,7 @@ function ReadPage({
             verse: currentVerse.verse,
             text: currentVerse.text,
         }
-
         // console.log(highlithedVerses.some((verse) => isEqual(verse, sendedVerse)))
-
         if (highlithedVerses.some((verse) => isEqual(verse, sendedVerse))) {
             setHighlithedVerses((prev) => prev.filter((current) => !isEqual(current, sendedVerse)));
         } else {
@@ -84,33 +88,6 @@ function ReadPage({
         }
     }
 
-    function isEqual(obj1: any, obj2: any): boolean {
-        if (obj1 === obj2) {
-            return true;
-        }
-
-        if (obj1 == null || obj2 == null) {
-            return false;
-        }
-
-        if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
-            return false;
-        }
-
-        const keys1 = Object.keys(obj1);
-        const keys2 = Object.keys(obj2);
-        if (keys1.length !== keys2.length) {
-            return false;
-        }
-
-        for (const key of keys1) {
-            if (!isEqual(obj1[key], obj2[key])) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     if ((isLoading || isFetching)) return (
         <Loading />
@@ -143,8 +120,7 @@ function ReadPage({
 
 
     return (
-        <div className="max-w-[80rem] mx-auto flex flex-col px-10 pb-[7rem]">
-            
+        <div ref={divRef} className="max-w-[80rem] mx-auto flex flex-col px-10 pb-[7rem]">
             <div className="flex rounded-md items-center justify-center">
                 <label
                     className={`rounded-md px-8 py-2 text-primary/50 text-3xl font-bold pt-5 flex flex-col justify-center items-center`}

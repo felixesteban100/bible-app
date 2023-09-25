@@ -21,7 +21,7 @@ type HeaderProps = {
     chapter: number;
     book: Book;
     theme: string;
-    moveChapter: (moveTo: string, bookIdSelected: number) => void
+    moveChapter: (moveTo: string/* , bookIdSelected: number */) => void
 }
 
 function Header({ children, version, chapter, book, theme, moveChapter }: HeaderProps) {
@@ -41,7 +41,7 @@ function Header({ children, version, chapter, book, theme, moveChapter }: Header
                                         icon={<AiOutlineArrowLeft className="text-base-content" />}
                                         moveChapter={moveChapter}
                                         move={"previous"}
-                                        bookIdSelected={book.bookid - 1}
+                                        // bookIdSelected={book.bookid - 1}
                                         hideInSmallScreen={false}
                                     />
                                     <DialogTrigger
@@ -56,7 +56,7 @@ function Header({ children, version, chapter, book, theme, moveChapter }: Header
                                         icon={<AiOutlineArrowRight className="text-base-content" />}
                                         moveChapter={moveChapter}
                                         move={"next"}
-                                        bookIdSelected={book.bookid + 1}
+                                        // bookIdSelected={book.bookid + 1}
                                         hideInSmallScreen={false}
                                     />
                                     <DialogContent data-theme={theme} className="border-none flex justify-center items-center w-[80vw]">

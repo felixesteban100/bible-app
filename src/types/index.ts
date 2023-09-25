@@ -65,9 +65,9 @@ export type ModalBooksChaptersVerseProps = {
 
 export type ButtonProps = {
     icon: JSX.Element;
-    moveChapter: (moveTo: string, bookIdSelected: number) => void;
+    moveChapter: (moveTo: string/* , bookIdSelected: number */) => void;
     move: string;
-    bookIdSelected: number;
+    // bookIdSelected: number;
     hideInSmallScreen: boolean;
     // changeFontSize?: boolean;
     classMore?: string
@@ -122,7 +122,7 @@ export type ReadPageProps = {
     bookSelected: Book
     chapterSelected: number;
     versionSelected: string;
-    moveChapter: (moveTo: string) => void;
+    // moveChapter: (moveTo: string) => void;
     textSize: number;
     // textSize: string;
     highlithedVerses: HighlightedVerse[]

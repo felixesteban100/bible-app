@@ -16,15 +16,10 @@ import BottomNavigation from "./components/BottomNavigation";
 
 // MAYBE I SHOULD USE REACT ROUTER
 
-// I MUST USE THE SHEET FROM SHADCN UI
-// USE SHADCN IU FOR THE tabs in the reference module
-
-
 //to compare with 
 // https://bolls.life/NASB/30/7/-1
 
-// if you want the API to work you should turn off the adblock extention
-
+// if you want the API to work you should turn off the adblock extention on the site
 
 function App() {
   const versions: Versions = { ...versions_withBooks };
@@ -45,27 +40,16 @@ function App() {
     },
   })
 
-  useEffect(() => { refetch() }, [book, chapter, version]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    refetch()
+  }, [book, chapter, version]);
 
   const [textSize, setTextSize] = useLocalStorage("BIBLEAPP_TEXTSIZE", 4)
   const [fontFamily, setFontFamily] = useLocalStorage("BIBLEAPP_FONTFAMILY", "font-sans")
   const [history, setHistory] = useLocalStorage<Chapter[] | []>("BIBLEAPP_HISTORY", [])
   const [theme, setTheme] = useLocalStorage("BIBLEAPP_THEME", "light")
   const [highlithedVerses, setHighlithedVerses] = useLocalStorage<HighlightedVerse[]>("BIBLEAPP_HIGHLIGHTEDVERSES", [])
-
-  useEffect(() => {
-    if (verse !== 0) {
-      setTimeout(() => {
-        const section = document.getElementById(`verse-${verse}`);
-        if (section) {
-          window.scrollTo({
-            top: section.offsetTop + 70,
-            behavior: 'smooth'
-          })
-        }
-      }, 1000)
-    }
-  }, [verse])
 
 
   function changeVersion(version_short_name: string) {
@@ -76,7 +60,7 @@ function App() {
     }
   }
 
-  function moveChapterShortCut(moveTo: string) {
+  function moveChapterShortCut(moveTo: string/* , bookIdSelected: number */) {
     moveChapter(moveTo, setChapter, chapter, setBook, book, setVerse, setHistory, versions, version)
   }
 
@@ -164,16 +148,13 @@ function App() {
         bookSelected={book}
         chapterSelected={chapter}
         versionSelected={version}
-        moveChapter={moveChapterShortCut}
+        // moveChapter={moveChapterShortCut}
         textSize={textSize}
-
         chapterContent={chapterContent}
         error={error}
         isLoading={isLoading}
         isFetching={isFetching}
-
         verseSelected={verse}
-
         highlithedVerses={highlithedVerses}
         setHighlithedVerses={setHighlithedVerses}
       />
@@ -181,7 +162,7 @@ function App() {
 
       <BottomNavigation
         verse={verse}
-        version={version}
+        // version={version}
         book={book}
         chapter={chapter}
         theme={theme}

@@ -17,16 +17,16 @@ import Button from '@/reusableComponents/Button'
 
 type BottomNavigationProps = {
     children: JSX.Element
-    version: string
+    // version: string
     book: Book
     verse: number
     chapter: number
     theme: string
-    moveChapter: (moveTo: string, bookIdSelected: number) => void
+    moveChapter: (moveTo: string/* , bookIdSelected: number */) => void
 }
 
 function BottomNavigation({
-    version,
+    // version,
     book,
     // verse,
     chapter,
@@ -45,7 +45,7 @@ function BottomNavigation({
                             icon={<AiOutlineArrowLeft className="text-base-content" />}
                             moveChapter={moveChapter}
                             move={"previous"}
-                            bookIdSelected={book.bookid - 1}
+                            // bookIdSelected={book.bookid - 1}
                             hideInSmallScreen={false}
                             classMore="col-span-1"
                         />
@@ -62,7 +62,7 @@ function BottomNavigation({
                             icon={<AiOutlineArrowRight className="text-base-content" />}
                             moveChapter={moveChapter}
                             move={"next"}
-                            bookIdSelected={book.bookid + 1}
+                            // bookIdSelected={book.bookid + 1}
                             hideInSmallScreen={false}
                             classMore="col-span-1"
                         />

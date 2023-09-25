@@ -1,6 +1,6 @@
 import { ButtonProps } from "../types";
 
-function Button({ icon, moveChapter, move, bookIdSelected, hideInSmallScreen/* , changeFontSize */, classMore }: ButtonProps) {
+function Button({ icon, moveChapter, move, /* bookIdSelected,  */hideInSmallScreen/* , changeFontSize */, classMore }: ButtonProps) {
     return (
         <div
             // className={`${hideInSmallScreen && "hidden sm:block"} btn rounded-full h-16 pt-1 text-5xl border-none text-current bg-base-100 hover:bg-primary`}
@@ -21,8 +21,8 @@ function Button({ icon, moveChapter, move, bookIdSelected, hideInSmallScreen/* ,
                 `
             }
             onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                moveChapter(move, bookIdSelected)
+                // moveChapter(move, bookIdSelected)
+                moveChapter(move)
             }}
         >
             <div className="flex items-center justify-center w-full h-full ">

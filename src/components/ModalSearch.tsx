@@ -55,6 +55,7 @@ function ModalSearch({ versionSelected, changeBook, changeChapter, changeVerse }
 
     return (
         <div>
+            <div className='mb-5 text-2xl font-semibold'>Search</div>
             <div className="form-control mt-8">
                 <div className="collapse-title text-xl font-medium p-0 ">
                     <div className="input-group ">
