@@ -4,7 +4,7 @@ import path from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/bibleApp/',
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
