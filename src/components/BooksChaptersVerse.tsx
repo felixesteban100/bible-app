@@ -55,8 +55,8 @@ function BooksChaptersVerse({ chapterContent, currentVersion, changeBook, change
                                 <CommandGroup>
                                     {versions[currentVersion].map((book) => (
                                         <CommandItem
-                                            // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
-                                            // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
+                                        // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
+                                        // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
                                         >
                                             <div
                                                 onClick={() => {

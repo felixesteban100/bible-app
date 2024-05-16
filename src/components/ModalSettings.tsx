@@ -46,35 +46,35 @@ function ModalSettings({
     const reversedHighlights = highlithedVerses.slice().reverse();
 
     const themes = [
-        "light",
-        "dark",
-        "cupcake",
-        "bumblebee",
-        "emerald",
-        "corporate",
-        "synthwave",
-        "retro",
-        "cyberpunk",
-        "valentine",
-        "halloween",
-        "garden",
-        "forest",
-        "aqua",
+        // "light",
+        // "dark",
+        // "cupcake",
+        // "bumblebee",
+        // "emerald",
+        // "corporate",
+        // "synthwave",
+        // "retro",
+        // "cyberpunk",
+        // "valentine",
+        // "halloween",
+        // "garden",
+        // "forest",
+        // "aqua",
         "lofi",
-        "pastel",
-        "fantasy",
-        "wireframe",
+        // "pastel",
+        // "fantasy",
+        // "wireframe",
         "black",
-        "luxury",
-        "dracula",
-        "cmyk",
-        "autumn",
-        "business",
-        "acid",
-        "lemonade",
-        "night",
-        "coffee",
-        "winter",
+        // "luxury",
+        // "dracula",
+        // "cmyk",
+        // "autumn",
+        // "business",
+        // "acid",
+        // "lemonade",
+        // "night",
+        // "coffee",
+        // "winter",
     ]
 
     /* function getTextSizeNumber(textSize: string): number {
@@ -178,7 +178,6 @@ function ModalSettings({
                 <Accordion className="active:border-none w-[90%] mx-auto" type="single" collapsible>
                     <AccordionItem value="item-1">
                         <AccordionTrigger className="flex gap-2 pr-5 ">
-                            {/* <svg className="fill-primary w-8 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M5.01112 11.5747L6.29288 10.2929C6.68341 9.90236 7.31657 9.90236 7.7071 10.2929C8.09762 10.6834 8.09762 11.3166 7.7071 11.7071L4.7071 14.7071C4.51956 14.8946 4.26521 15 3.99999 15C3.73477 15 3.48042 14.8946 3.29288 14.7071L0.292884 11.7071C-0.0976406 11.3166 -0.0976406 10.6834 0.292884 10.2929C0.683408 9.90236 1.31657 9.90236 1.7071 10.2929L3.0081 11.5939C3.22117 6.25933 7.61317 2 13 2C18.5229 2 23 6.47715 23 12C23 17.5228 18.5229 22 13 22C9.85817 22 7.05429 20.5499 5.22263 18.2864C4.87522 17.8571 4.94163 17.2274 5.37096 16.88C5.80028 16.5326 6.42996 16.599 6.77737 17.0283C8.24562 18.8427 10.4873 20 13 20C17.4183 20 21 16.4183 21 12C21 7.58172 17.4183 4 13 4C8.72441 4 5.23221 7.35412 5.01112 11.5747ZM13 5C13.5523 5 14 5.44772 14 6V11.5858L16.7071 14.2929C17.0976 14.6834 17.0976 15.3166 16.7071 15.7071C16.3166 16.0976 15.6834 16.0976 15.2929 15.7071L12.2929 12.7071C12.1054 12.5196 12 12.2652 12 12V6C12 5.44772 12.4477 5 13 5Z" /></svg> */}
                             <p className="text-primary text-2xl font-bold ">History</p>
                             <div className="w-full flex justify-end">
                                 <div
@@ -196,7 +195,7 @@ function ModalSettings({
                                             <label
                                                 key={index}
                                                 onClick={() => {
-                                                    changeVersion(currentChapter.version, )
+                                                    changeVersion(currentChapter.version,)
                                                     changeBook(currentChapter.book)
                                                     changeChapter(currentChapter.chapter)
                                                 }}
@@ -212,7 +211,6 @@ function ModalSettings({
                     </AccordionItem>
                     <AccordionItem value="item-2">
                         <AccordionTrigger className="font-medium flex gap-2 pr-5">
-                            {/* <svg className="fill-primary w-8 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M5.01112 11.5747L6.29288 10.2929C6.68341 9.90236 7.31657 9.90236 7.7071 10.2929C8.09762 10.6834 8.09762 11.3166 7.7071 11.7071L4.7071 14.7071C4.51956 14.8946 4.26521 15 3.99999 15C3.73477 15 3.48042 14.8946 3.29288 14.7071L0.292884 11.7071C-0.0976406 11.3166 -0.0976406 10.6834 0.292884 10.2929C0.683408 9.90236 1.31657 9.90236 1.7071 10.2929L3.0081 11.5939C3.22117 6.25933 7.61317 2 13 2C18.5229 2 23 6.47715 23 12C23 17.5228 18.5229 22 13 22C9.85817 22 7.05429 20.5499 5.22263 18.2864C4.87522 17.8571 4.94163 17.2274 5.37096 16.88C5.80028 16.5326 6.42996 16.599 6.77737 17.0283C8.24562 18.8427 10.4873 20 13 20C17.4183 20 21 16.4183 21 12C21 7.58172 17.4183 4 13 4C8.72441 4 5.23221 7.35412 5.01112 11.5747ZM13 5C13.5523 5 14 5.44772 14 6V11.5858L16.7071 14.2929C17.0976 14.6834 17.0976 15.3166 16.7071 15.7071C16.3166 16.0976 15.6834 16.0976 15.2929 15.7071L12.2929 12.7071C12.1054 12.5196 12 12.2652 12 12V6C12 5.44772 12.4477 5 13 5Z" /></svg> */}
                             <p className="text-primary text-2xl font-bold">Highlights</p>
                             <div className="w-full flex justify-end">
                                 <div
@@ -251,7 +249,6 @@ function ModalSettings({
                     </AccordionItem>
                     <AccordionItem value="item-3">
                         <AccordionTrigger className="font-medium flex gap-2 pr-5">
-                            {/* <svg className="fill-primary w-8 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73"><g><path d="M14.865,0C6.655,0,0,6.655,0,14.865c0,1.714,0.201,2.83,0.767,4.546c1.104,3.188,6.896-2.808,9.388,0.729 c2.492,3.535-5.62,6.64-0.18,8.764c2.475,0.601,3.175,0.826,4.89,0.826c8.21,0,14.865-6.654,14.865-14.864 C29.73,6.655,23.075,0,14.865,0z M22.077,4.955c1.694,0,3.069,1.17,3.069,2.614c0,1.442-1.375,2.613-3.069,2.613 c-1.695,0-3.07-1.171-3.07-2.613C19.007,6.125,20.381,4.955,22.077,4.955z M4.74,15.802c-1.695,0-3.069-1.171-3.069-2.614 s1.375-2.614,3.069-2.614c1.696,0,3.071,1.171,3.071,2.614S6.437,15.802,4.74,15.802z M8.335,9.784c-1.695,0-3.07-1.17-3.07-2.614 c0-1.444,1.375-2.614,3.07-2.614s3.07,1.17,3.07,2.614C11.405,8.614,10.03,9.784,8.335,9.784z M12.078,4.189 c0-1.443,1.374-2.615,3.07-2.615c1.694,0,3.068,1.172,3.068,2.615s-1.375,2.614-3.068,2.614 C13.452,6.803,12.078,5.632,12.078,4.189z M17.341,27.627c-1.696,0-3.069-1.17-3.069-2.613s1.375-2.613,3.069-2.613 c1.695,0,3.07,1.17,3.07,2.613S19.036,27.627,17.341,27.627z M23.48,23.155c-1.695,0-3.069-1.173-3.069-2.614 c0-1.443,1.374-2.614,3.069-2.614c1.694,0,3.069,1.171,3.069,2.614C26.55,21.982,25.176,23.155,23.48,23.155z M25.146,16.604 c-1.695,0-3.07-1.17-3.07-2.614s1.375-2.614,3.07-2.614s3.07,1.17,3.07,2.614S26.843,16.604,25.146,16.604z" /></g></svg> */}
                             <p className="text-primary text-2xl font-bold">Theme</p>
                         </AccordionTrigger>
                         <AccordionContent>
@@ -279,6 +276,8 @@ function ModalSettings({
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
+
+
 
                 {/* <div className="flex flex-col gap-2 p-5 rounded-md">
                 <div tabIndex={0} className="collapse border bg-base-100 rounded-box border-primary">

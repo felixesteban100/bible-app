@@ -95,6 +95,7 @@ function App() {
   return (
     <div
       data-theme={theme}
+      // className={`min-h-screen ${fontFamily} theme-controller`}
       className={`min-h-screen ${fontFamily}`}
     >
       <Header
@@ -103,6 +104,7 @@ function App() {
         chapter={chapter}
         book={book}
         moveChapter={moveChapterShortCut}
+        setTheme={setTheme}
       >
         <BooksChaptersVerse
           currentVersion={version}

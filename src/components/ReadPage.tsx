@@ -154,10 +154,11 @@ function ReadPage({
                                 className={
                                     `text-primary
                                      decoration-dotted mr-1
+                                     font-bold
                                     `
                                 }
                             >
-                                {currentVerse.verse}
+                                {currentVerse.verse}{" "}
                             </span>
                             <span
                                 className={
