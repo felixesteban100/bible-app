@@ -120,7 +120,7 @@ function ReadPage({
 
 
     return (
-        <div ref={divRef} className="max-w-[80rem] mx-auto flex flex-col px-10 pb-[7rem]">
+        <div ref={divRef} className="max-w-[80rem] mx-auto flex flex-col px-10 pb-[7rem] cursor-text">
             <div className="flex rounded-md items-center justify-center">
                 <label
                     className={`rounded-md px-8 py-2 text-primary/50 text-3xl font-bold pt-5 flex flex-col justify-center items-center`}

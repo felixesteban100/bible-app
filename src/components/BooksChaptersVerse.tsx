@@ -27,27 +27,30 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { DialogTrigger } from '@radix-ui/react-dialog';
+import { DialogTrigger } from '@/components/ui/dialog';
+import { useState } from 'react';
 
 function BooksChaptersVerse({ chapterContent, currentVersion, changeBook, changeChapter, bookSelected, chapterSelected, changeVerse, verseSelected, theme }: ModalBooksChaptersVerseProps) {
+    const [selectedTab, setSelectedTab] = useState("chapter")
+
     const versions: Versions = {
         ...versions_withBooks
     };
     //https://bolls.life/static/translations/YLT.json
 
     return (
-        <Tabs data-theme={theme} defaultValue="book" className="w-full">
+        <Tabs data-theme={theme} value={selectedTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3 bg-base-300">
-                <TabsTrigger className='text-base-content' value="book">Book</TabsTrigger>
-                <TabsTrigger className='text-base-content' value="chapter">Chapter</TabsTrigger>
-                <TabsTrigger className='text-base-content' value="verse">Verse</TabsTrigger>
+                <TabsTrigger onClick={() => setSelectedTab('book')} className='text-base-content' value="book">Book</TabsTrigger>
+                <TabsTrigger onClick={() => setSelectedTab('chapter')} className='text-base-content' value="chapter">Chapter</TabsTrigger>
+                <TabsTrigger onClick={() => setSelectedTab('verse')} className='text-base-content' value="verse">Verse</TabsTrigger>
             </TabsList>
             <TabsContent value="book">
                 <Card className='min-h-[60vh] border-none '>
                     <CardHeader>
                         <CardTitle>Book</CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-2 h-[60vh] ">
+                    <CardContent className="space-y-2 h-[60vh]">
                         <Command className="rounded-lg border shadow-md h-full border-none">
                             <CommandInput placeholder="Type a book name..." />
                             <CommandList className='max-h-[52.5vh]'>
@@ -55,12 +58,14 @@ function BooksChaptersVerse({ chapterContent, currentVersion, changeBook, change
                                 <CommandGroup>
                                     {versions[currentVersion].map((book) => (
                                         <CommandItem
-                                        // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
-                                        // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
+                                            // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
+                                            // className={`${book.name === bookSelected.name ? "bg-primary text-primary-content" : "hover:bg-primary"}`}
+                                            key={book.bookid}
                                         >
                                             <div
                                                 onClick={() => {
                                                     changeBook(book)
+                                                    setSelectedTab('chapter')
                                                 }}
                                                 key={book.name}
                                                 // className={`btn ${book.name === bookSelected.name ? "btn-primary text-primary-content" : ""} text-2xl hover:btn-primary hover:text-primary-content`}
@@ -89,6 +94,7 @@ function BooksChaptersVerse({ chapterContent, currentVersion, changeBook, change
                                         <label
                                             key={indexChapter}
                                             onClick={() => {
+                                                setSelectedTab('verse')
                                                 changeChapter(indexChapter + 1)
                                             }}
                                             className={`btn ${(bookSelected.name === bookSelected.name && chapterSelected === indexChapter + 1) ? "btn-primary" : ""}`}
