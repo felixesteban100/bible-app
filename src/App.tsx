@@ -13,6 +13,7 @@ import axios from "axios";
 import BooksChaptersVerse from "./components/BooksChaptersVerse";
 import { moveChapter } from "./functions";
 import BottomNavigation from "./components/BottomNavigation";
+import { ThemeProvider } from "@/components/theme-provider"
 
 // MAYBE I SHOULD USE REACT ROUTER
 
@@ -93,97 +94,99 @@ function App() {
   }
 
   return (
-    <div
-      data-theme={theme}
-      // className={`min-h-screen ${fontFamily} theme-controller`}
-      className={`min-h-screen ${fontFamily}`}
-    >
-      <Header
-        theme={theme}
-        version={version}
-        chapter={chapter}
-        book={book}
-        moveChapter={moveChapterShortCut}
-        setTheme={setTheme}
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div
+        data-theme={theme}
+        // className={`min-h-screen ${fontFamily} theme-controller`}
+        className={`min-h-screen ${fontFamily}`}
       >
-        <BooksChaptersVerse
-          currentVersion={version}
-          changeBook={changeBook}
-          changeChapter={changeChapter}
-          chapterSelected={chapter}
-          bookSelected={book}
-          chapterContent={chapterContent}
-          changeVerse={changeVerse}
-          verseSelected={verse}
+        <Header
           theme={theme}
-        />
-        <ModalVersions
-          changeVersion={changeVersion}
-          versionSelected={version}
-        />
-        <ModalSearch
-          versionSelected={version}
-          changeBook={changeBook}
-          changeChapter={changeChapter}
-          changeVerse={changeVerse}
-        />
-        <ModalSettings
-          textSize={textSize}
-          changeTextSize={changeTextSize}
-          fontFamily={fontFamily}
-          changeFontFamily={changeFontFamily}
-          history={history}
-          changeBook={changeBook}
-          changeChapter={changeChapter}
-          changeVersion={changeVersion}
-          changeVerse={changeVerse}
-          theme={theme}
+          version={version}
+          chapter={chapter}
+          book={book}
+          moveChapter={moveChapterShortCut}
           setTheme={setTheme}
-          setHistory={setHistory}
+        >
+          <BooksChaptersVerse
+            currentVersion={version}
+            changeBook={changeBook}
+            changeChapter={changeChapter}
+            chapterSelected={chapter}
+            bookSelected={book}
+            chapterContent={chapterContent}
+            changeVerse={changeVerse}
+            verseSelected={verse}
+            theme={theme}
+          />
+          <ModalVersions
+            changeVersion={changeVersion}
+            versionSelected={version}
+          />
+          <ModalSearch
+            versionSelected={version}
+            changeBook={changeBook}
+            changeChapter={changeChapter}
+            changeVerse={changeVerse}
+          />
+          <ModalSettings
+            textSize={textSize}
+            changeTextSize={changeTextSize}
+            fontFamily={fontFamily}
+            changeFontFamily={changeFontFamily}
+            history={history}
+            changeBook={changeBook}
+            changeChapter={changeChapter}
+            changeVersion={changeVersion}
+            changeVerse={changeVerse}
+            theme={theme}
+            setTheme={setTheme}
+            setHistory={setHistory}
 
+            highlithedVerses={highlithedVerses}
+            setHighlithedVerses={setHighlithedVerses}
+          />
+        </Header>
+
+        <ReadPage
+          bookSelected={book}
+          chapterSelected={chapter}
+          versionSelected={version}
+          // moveChapter={moveChapterShortCut}
+          textSize={textSize}
+          chapterContent={chapterContent}
+          error={error}
+          isLoading={isLoading}
+          isFetching={isFetching}
+          verseSelected={verse}
           highlithedVerses={highlithedVerses}
           setHighlithedVerses={setHighlithedVerses}
         />
-      </Header>
-
-      <ReadPage
-        bookSelected={book}
-        chapterSelected={chapter}
-        versionSelected={version}
-        // moveChapter={moveChapterShortCut}
-        textSize={textSize}
-        chapterContent={chapterContent}
-        error={error}
-        isLoading={isLoading}
-        isFetching={isFetching}
-        verseSelected={verse}
-        highlithedVerses={highlithedVerses}
-        setHighlithedVerses={setHighlithedVerses}
-      />
 
 
-      <BottomNavigation
-        verse={verse}
-        // version={version}
-        book={book}
-        chapter={chapter}
-        theme={theme}
-        moveChapter={moveChapterShortCut}
-      >
-        <BooksChaptersVerse
-          currentVersion={version}
-          changeBook={changeBook}
-          changeChapter={changeChapter}
-          chapterSelected={chapter}
-          bookSelected={book}
-          chapterContent={chapterContent}
-          changeVerse={changeVerse}
-          verseSelected={verse}
+        <BottomNavigation
+          verse={verse}
+          // version={version}
+          book={book}
+          chapter={chapter}
           theme={theme}
-        />
-      </BottomNavigation>
+          moveChapter={moveChapterShortCut}
+        >
+          <BooksChaptersVerse
+            currentVersion={version}
+            changeBook={changeBook}
+            changeChapter={changeChapter}
+            chapterSelected={chapter}
+            bookSelected={book}
+            chapterContent={chapterContent}
+            changeVerse={changeVerse}
+            verseSelected={verse}
+            theme={theme}
+          />
+        </BottomNavigation>
 
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 

@@ -14,6 +14,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useTheme } from "./theme-provider";
 
 function ModalSettings({
     textSize,
@@ -26,7 +27,7 @@ function ModalSettings({
     changeVerse,
     changeVersion,
     theme,
-    setTheme,
+    setTheme: setThemeSended,
     setHistory,
 
     highlithedVerses,
@@ -37,6 +38,8 @@ function ModalSettings({
 
 }: ModalSettingsProps) {
     // const [rangeValue, setRangeValue] = useLocalStorage("BIBLEAPP_RANGEVALUE", "25")
+
+    const { setTheme } = useTheme()
 
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
@@ -256,7 +259,14 @@ function ModalSettings({
                                 {themes.map((currentTheme) => (
                                     <div
                                         key={currentTheme}
-                                        onClick={() => setTheme(currentTheme)}
+                                        onClick={() => {
+                                            setThemeSended(currentTheme)
+                                            if (currentTheme === "lofi") {
+                                                setTheme('light')
+                                            } else {
+                                                setTheme('dark')
+                                            }
+                                        }}
                                         data-theme={currentTheme}
                                         className="flex justify-start items-center h-10"
                                     >
